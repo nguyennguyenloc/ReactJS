@@ -1,7 +1,8 @@
 import "./App.css";
 // import LayoutMainHome from "./component/BaiTapThucHanhLayout/Layout";
-import DataBindingComponent from "./component/DataBinding/DataBinding";
-import DataBindingRFC from "./component/DataBinding/DataBindingRFC";
+// import DataBindingComponent from "./component/DataBinding/DataBinding";
+// import DataBindingRFC from "./component/DataBinding/DataBindingRFC";
+import HandleEvent from "./component/HandleEvent/HandleEvent";
 // import LayoutMain from "./component/Layout/LayoutMain";
 
 function App() {
@@ -9,8 +10,9 @@ function App() {
     <div className="App">
       {/* <LayoutMain /> */}
       {/* <LayoutMainHome /> */}
-      <DataBindingComponent />
-      <DataBindingRFC />
+      {/* <DataBindingComponent /> */}
+      {/* <DataBindingRFC /> */}
+      <HandleEvent />
     </div>
   );
 }

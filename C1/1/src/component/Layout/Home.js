@@ -24,8 +24,8 @@ export default class Home extends Component {
             <Content />
           </div>
         </div>
-        <div style={style} className="row">
-          <div className="col-12">
+        <div className="row">
+          <div style={style} className="col-12">
             <Footer />
           </div>
         </div>

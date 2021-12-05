@@ -1,5 +1,7 @@
 import "./App.css";
-import StateDemo from "./component/State/StateDemo";
+import Styling from "./component/Styling/Styling";
+import "./component/Styling/Styling";
+// import StateDemo from "./component/State/StateDemo";
 // import LayoutMainHome from "./component/BaiTapThucHanhLayout/Layout";
 // import DataBindingComponent from "./component/DataBinding/DataBinding";
 // import DataBindingRFC from "./component/DataBinding/DataBindingRFC";
@@ -16,7 +18,8 @@ function App() {
       {/* <DataBindingRFC /> */}
       {/* <HandleEvent /> */}
       {/* <RenderingCondition /> */}
-      <StateDemo />
+      {/* <StateDemo /> */}
+      <Styling />
     </div>
   );
 }

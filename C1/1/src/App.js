@@ -1,6 +1,7 @@
 import "./App.css";
-import Styling from "./component/Styling/Styling";
-import "./component/Styling/Styling";
+// import Styling from "./component/Styling/Styling";
+// import "./component/Styling/Styling";
+import BaiTapChonXe from "./component/BaiTapChonXe/BaiTapChonXe";
 // import StateDemo from "./component/State/StateDemo";
 // import LayoutMainHome from "./component/BaiTapThucHanhLayout/Layout";
 // import DataBindingComponent from "./component/DataBinding/DataBinding";
@@ -19,7 +20,8 @@ function App() {
       {/* <HandleEvent /> */}
       {/* <RenderingCondition /> */}
       {/* <StateDemo /> */}
-      <Styling />
+      {/* <Styling /> */}
+      <BaiTapChonXe />
     </div>
   );
 }

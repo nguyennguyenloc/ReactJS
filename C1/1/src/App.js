@@ -1,9 +1,10 @@
 import "./App.css";
+import StateDemo from "./component/State/StateDemo";
 // import LayoutMainHome from "./component/BaiTapThucHanhLayout/Layout";
 // import DataBindingComponent from "./component/DataBinding/DataBinding";
 // import DataBindingRFC from "./component/DataBinding/DataBindingRFC";
 // import HandleEvent from "./component/HandleEvent/HandleEvent";
-import RenderingCondition from "./component/RenderingConditions/RenderingCondition";
+// import RenderingCondition from "./component/RenderingConditions/RenderingCondition";
 // import LayoutMain from "./component/Layout/LayoutMain";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       {/* <DataBindingComponent /> */}
       {/* <DataBindingRFC /> */}
       {/* <HandleEvent /> */}
-      <RenderingCondition />
+      {/* <RenderingCondition /> */}
+      <StateDemo />
     </div>
   );
 }

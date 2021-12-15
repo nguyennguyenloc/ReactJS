@@ -1,6 +1,18 @@
 import React, { Component } from "react";
-
+import dataGlasses from "../Data/dataGlasses.json";
 export default class BaiTapThuKinh extends Component {
+  renderGlassesList = () => {
+    return dataGlasses.map((glasses, index) => {
+      return (
+        <img
+          className="ml-2 p-2 border border-width-1"
+          style={{ width: "120px", cursor: "pointer" }}
+          src={glasses.url}
+          alt="{index}"
+        />
+      );
+    });
+  };
   render() {
     const styleGlasses = {
       width: "150px",
@@ -71,6 +83,10 @@ export default class BaiTapThuKinh extends Component {
                 />
               </div>
             </div>
+          </div>
+          {/* Div chứa các kính được chọn */}
+          <div className="bg-light container mt-5 p-5 text-center d-flex justify-content-around">
+            {this.renderGlassesList()}
           </div>
         </div>
       </div>

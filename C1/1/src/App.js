@@ -1,5 +1,6 @@
 import "./App.css";
-import BaiTapRenderFilm from "./component/BaiTapRenderFilm/BaiTapRenderFilm";
+// import BaiTapRenderFilm from "./component/BaiTapRenderFilm/BaiTapRenderFilm";
+import BaiTapThuKinh from "./component/BaiTapThuKinh/BaiTapThuKinh";
 // import Styling from "./component/Styling/Styling";
 // import "./component/Styling/Styling";
 // import BaiTapChonXe from "./component/BaiTapChonXe/BaiTapChonXe";
@@ -25,7 +26,8 @@ function App() {
       {/* <Styling /> */}
       {/* <BaiTapChonXe /> */}
       {/* <RenderWithLoop /> */}
-      <BaiTapRenderFilm />
+      {/* <BaiTapRenderFilm /> */}
+      <BaiTapThuKinh />
     </div>
   );
 }

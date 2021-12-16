@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import dataGlasses from "../Data/dataGlasses.json";
+import "./BaiTapThuKinh.css";
 export default class BaiTapThuKinh extends Component {
+  state = {
+    glassesCurrent: {
+      id: 2,
+      price: 50,
+      name: "GUCCI G8759H",
+      url: "./glassesImage/v2.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+  };
   renderGlassesList = () => {
     return dataGlasses.map((glasses, index) => {
       return (
         <img
+          onClick={() => this.changeGlass(glasses)}
           className="ml-2 p-2 border border-width-1"
           style={{ width: "120px", cursor: "pointer" }}
           src={glasses.url}
@@ -13,12 +24,32 @@ export default class BaiTapThuKinh extends Component {
       );
     });
   };
+
+  changeGlass = (newGlasses) => {
+    this.setState({
+      glassesCurrent: newGlasses,
+    });
+  };
   render() {
+    const keyFrame = `@keyframes animationGlasses${Date.now()} {
+      from{
+          width:0;
+          opacity:0;
+          transform: rotate(45deg);
+      }to{
+          width: 150px;
+          opacity:.7;
+          transform: rotate(0deg);
+
+      }
+    }`;
     const styleGlasses = {
       width: "150px",
       top: "75px",
       right: "70px",
       opacity: ".7",
+      transform: "rotate(0deg)",
+      animation: `animationGlasses${Date.now()} 1s`,
     };
 
     const infoGlasses = {
@@ -38,6 +69,7 @@ export default class BaiTapThuKinh extends Component {
           minHeight: "2000px",
         }}
       >
+        <style>{keyFrame}</style>
         <div style={{ backgroundColor: "rgba(0,0,0,.5)", minHeight: "2000px" }}>
           <h3
             style={{ backgroundColor: "rgba(0,0,0,.3)" }}
@@ -57,8 +89,8 @@ export default class BaiTapThuKinh extends Component {
                   />
                   <img
                     style={styleGlasses}
-                    className="position-absolute"
-                    src="./glassesImage/v1.png"
+                    className="position-absolute glassStyle"
+                    src={this.state.glassesCurrent.url}
                     alt="glasses"
                   />
                   <div style={infoGlasses} className="position-relative">
@@ -66,11 +98,11 @@ export default class BaiTapThuKinh extends Component {
                       style={{ color: "#AB82FF", fontSize: "17px" }}
                       className="font-weight-bold"
                     >
-                      Tên kính
+                      {this.state.glassesCurrent.name}
                     </span>
                     <br />
                     <span style={{ fontSize: "13px", fontWeight: "400" }}>
-                      Mô tả
+                      {this.state.glassesCurrent.desc}
                     </span>
                   </div>
                 </div>

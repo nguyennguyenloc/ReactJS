@@ -1,9 +1,10 @@
 import "./App.css";
 // import BaiTapRenderFilm from "./component/BaiTapRenderFilm/BaiTapRenderFilm";
-import BaiTapThuKinh from "./component/BaiTapThuKinh/BaiTapThuKinh";
+// import BaiTapThuKinh from "./component/BaiTapThuKinh/BaiTapThuKinh";
 // import Styling from "./component/Styling/Styling";
 // import "./component/Styling/Styling";
 // import BaiTapChonXe from "./component/BaiTapChonXe/BaiTapChonXe";
+import BaiTapChonXeNangCao from "./component/BaiTapChonXeNangCao/BaiTapChonXeNangCao";
 // import RenderWithLoop from "./component/RenderWidthLoop/RenderWidthLoop";
 // import StateDemo from "./component/State/StateDemo";
 // import LayoutMainHome from "./component/BaiTapThucHanhLayout/Layout";
@@ -27,7 +28,8 @@ function App() {
       {/* <BaiTapChonXe /> */}
       {/* <RenderWithLoop /> */}
       {/* <BaiTapRenderFilm /> */}
-      <BaiTapThuKinh />
+      {/* <BaiTapThuKinh /> */}
+      <BaiTapChonXeNangCao />
     </div>
   );
 }

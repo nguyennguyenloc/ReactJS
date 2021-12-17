@@ -69,12 +69,24 @@ export default class BaiTapChonXeNangCao extends Component {
     });
   };
 
+  changeWheel = (newWheel) => {
+    //Tìm trong state hiện tại (this.state.car.wheels)
+    let obWheel = this.state.car.wheels.find(
+      (item) => item.idWheel === newWheel.idWheel
+    );
+    if (obWheel !== -1) {
+      this.setState({
+        car: { ...this.state.car, srcImg: obWheel.srcImg },
+      });
+    }
+  };
+
   renderWheels = () => {
     return dataWheels.map((item, index) => {
       return (
         <div
           onClick={() => {
-            this.changeImg(item);
+            this.changeWheel(item);
           }}
           className="row border border-color-default mt-1 m-2"
           style={{ cursor: "pointer" }}
@@ -122,7 +134,7 @@ export default class BaiTapChonXeNangCao extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <div className="model" style={{ width: "100%" }}>
+            <div className="model">
               <div
                 id="carCurrent"
                 style={{ width: "100%" }}
@@ -140,15 +152,15 @@ export default class BaiTapChonXeNangCao extends Component {
                   <tbody>
                     <tr>
                       <td>Color</td>
-                      <td>Black</td>
+                      <td>{this.state.car.color}</td>
                     </tr>
                     <tr>
                       <td>Price</td>
-                      <td>$ 19.000,00</td>
+                      <td>{this.state.car.price}</td>
                     </tr>
                     <tr>
                       <td>Engine Type</td>
-                      <td>In-line-4-cylinder</td>
+                      <td>{this.state.car.engineType}</td>
                     </tr>
                   </tbody>
                 </table>

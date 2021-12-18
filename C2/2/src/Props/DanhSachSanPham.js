@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SanPham from "./SanPham";
 // import dataPhone from "../Data/dataPhone.json";
 export default class DanhSachSanPham extends Component {
   mangSanPham = [
@@ -58,24 +59,7 @@ export default class DanhSachSanPham extends Component {
     return this.mangSanPham.map((sanpham, index) => {
       return (
         <div className="col-4" key={index}>
-          <div class="card text-left text-center">
-            <img
-              style={{ width: "300px", minHeight: "350px" }}
-              className="card-img-top"
-              src={sanpham.hinhAnh}
-              alt={index}
-            />
-            <div class="card-body">
-              <h4 class="card-title">{sanpham.tenSP}</h4>
-              <p class="card-text">{sanpham.giaBan}</p>
-              <button
-                onClick={() => this.changeState(sanpham)}
-                className="btn btn-success"
-              >
-                Xem chi tiết
-              </button>
-            </div>
-          </div>
+          <SanPham sanpham={sanpham} xemchitiet={this.changeState} />
         </div>
       );
     });

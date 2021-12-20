@@ -17,7 +17,15 @@ export default class CartModal extends Component {
           <td>{item.tenSP}</td>
           <td>{item.soLuong}</td>
           <td>{item.giaBan.toLocaleString()}</td>
-          <td>{item.giaBan * item.soLuong}</td>
+          <td>{(item.giaBan * item.soLuong).toLocaleString()}</td>
+          <td>
+            <button
+              onClick={() => this.props.xoaGioHang(item)}
+              className="btn btn-danger"
+            >
+              Xoá
+            </button>
+          </td>
         </tr>
       );
     });

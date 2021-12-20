@@ -59,7 +59,11 @@ export default class ProductListEXC extends Component {
     return this.mangSanPham.map((sanpham, index) => {
       return (
         <div className="col-4" key={index}>
-          <ProductItemEXC sanpham={sanpham} xemchitiet={this.changeState} />
+          <ProductItemEXC
+            sanpham={sanpham}
+            xemchitiet={this.changeState}
+            themGioHang={this.props.themGioHang}
+          />
         </div>
       );
     });
@@ -68,6 +72,7 @@ export default class ProductListEXC extends Component {
   changeState = (newSP) => {
     this.setState({ sanPhamChiTiet: newSP });
   };
+
   render() {
     return (
       <div className="container">
@@ -83,7 +88,7 @@ export default class ProductListEXC extends Component {
           </div>
           <div className="col-8">
             <h3>Thông số kỹ thuật</h3>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th>Màn hình</th>

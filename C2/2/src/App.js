@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ExerciseCarStore from "./Props/Product/ExerciseCarStore";
+// import ExerciseCarStore from "./Props/Product/ExerciseCarStore";
+import ExerciseSportShoes from "./Props/SportShoes/ExerciseSportShoes";
 // import DanhSachSanPham from "./Props/DanhSachSanPham";
 // import ProductList from "./Props/ProductList";
 // import DemoProps from "./Props/DemoProps";
@@ -66,7 +67,8 @@ export default class App extends Component {
       // </div>
       <div>
         {/* <DanhSachSanPham /> */}
-        <ExerciseCarStore />
+        {/* <ExerciseCarStore /> */}
+        <ExerciseSportShoes />
       </div>
     );
   }

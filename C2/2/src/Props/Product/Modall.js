@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 export default class Modal extends Component {
   render() {
+    let { content } = this.props;
     return (
       <div>
         <div
@@ -15,7 +16,7 @@ export default class Modal extends Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Modal title</h5>
+                <h5 className="modal-title">{content.name}</h5>
                 <button
                   type="button"
                   className="close"
@@ -25,7 +26,13 @@ export default class Modal extends Component {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <div className="modal-body">Body</div>
+              <div className="modal-body">
+                <img
+                  style={{ width: "100%" }}
+                  src={content.image}
+                  alt={content.image}
+                />
+              </div>
               <div className="modal-footer">
                 <button
                   type="button"

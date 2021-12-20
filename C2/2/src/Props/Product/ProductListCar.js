@@ -5,7 +5,7 @@ export default class ProductListCar extends Component {
     return this.props.productsData.map((item, index) => {
       return (
         <div className="col-3" key={index}>
-          <ProductItemCar item={item} />
+          <ProductItemCar item={item} xemChiTiet={this.props.xemChiTiet} />
         </div>
       );
     });

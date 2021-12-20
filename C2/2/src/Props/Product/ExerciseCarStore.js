@@ -3,6 +3,14 @@ import Modal from "./Modall";
 import ProductListCar from "./ProductListCar";
 
 export default class ExerciseCarStore extends Component {
+  state = {
+    productDetail: {
+      id: 1,
+      name: "black car",
+      image: "./products/black-car.jpg",
+      price: 1000,
+    },
+  };
   products = [
     {
       id: 1,
@@ -25,12 +33,21 @@ export default class ExerciseCarStore extends Component {
     },
   ];
 
+  xemChiTiet = (newproduct) => {
+    this.setState({
+      productDetail: newproduct,
+    });
+  };
+
   render() {
     return (
       <div>
         <h3 className="display-4 text-center">Danh sách xe</h3>
-        <Modal />
-        <ProductListCar productsData={this.products} />
+        <Modal content={this.state.productDetail} />
+        <ProductListCar
+          productsData={this.products}
+          xemChiTiet={this.xemChiTiet}
+        />
       </div>
     );
   }

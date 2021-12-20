@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 export default class CartModal extends Component {
+  tinhTongTien = () => {
+    return this.props.gioHang.reduce((tongTien, spGioHang) => {
+      return (tongTien += spGioHang.soLuong * spGioHang.giaBan);
+    }, 0);
+  };
   renderCar = () => {
     let { gioHang } = this.props;
     return gioHang.map((item, index) => {
@@ -15,7 +20,25 @@ export default class CartModal extends Component {
             />
           </td>
           <td>{item.tenSP}</td>
-          <td>{item.soLuong}</td>
+          <td>
+            <button
+              className="btn btn-success mr-1"
+              onClick={() => {
+                this.props.tanggiamSoLuong(item, 1);
+              }}
+            >
+              +
+            </button>
+            {item.soLuong}
+            <button
+              onClick={() => {
+                this.props.tanggiamSoLuong(item, -1);
+              }}
+              className="btn btn-success ml-1"
+            >
+              -
+            </button>
+          </td>
           <td>{item.giaBan.toLocaleString()}</td>
           <td>{(item.giaBan * item.soLuong).toLocaleString()}</td>
           <td>
@@ -71,6 +94,13 @@ export default class CartModal extends Component {
                   </tr>
                 </thead>
                 <tbody>{this.renderCar()}</tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="5"></td>
+                    <td>Tổng tiền</td>
+                    <td>{this.tinhTongTien()}</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <div className="modal-footer">

@@ -77,6 +77,23 @@ export default class ExerciseCart extends Component {
       return (tongSoLuong += spGioHang.soLuong);
     }, 0);
   };
+
+  tanggiamSoLuong = (soLuong, number) => {
+    let index = this.state.gioHang.findIndex(
+      (item) => item.maSP === soLuong.maSP
+    );
+    if (index !== -1) {
+      let item = this.state.gioHang[index];
+      if (item.soLuong <= 1 && number === -1) {
+        alert("Số lượng tốt thiểu ít nhất là -1 !");
+        return;
+      }
+      item.soLuong += number;
+    }
+    this.setState({
+      gioHang: this.state.gioHang,
+    });
+  };
   render() {
     return (
       <div className="container-fluid">
@@ -94,7 +111,11 @@ export default class ExerciseCart extends Component {
             </i>
           </span>
         </div>
-        <CartModal xoaGioHang={this.xoaGioHang} gioHang={this.state.gioHang} />
+        <CartModal
+          tanggiamSoLuong={this.tanggiamSoLuong}
+          xoaGioHang={this.xoaGioHang}
+          gioHang={this.state.gioHang}
+        />
         <ProductListEXC themGioHang={this.themGioHang} />
       </div>
     );

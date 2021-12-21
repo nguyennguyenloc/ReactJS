@@ -17,9 +17,23 @@ class GioHangRedux extends Component {
           </td>
           <td>{item.tenSP}</td>
           <td>
-            <button className="btn btn-success mr-1">+</button>
+            <button
+              onClick={() => {
+                this.props.tangGiamSoLuong(item.maSP, true);
+              }}
+              className="btn btn-success mr-1"
+            >
+              +
+            </button>
             {item.soLuong}
-            <button className="btn btn-success ml-1">-</button>
+            <button
+              onClick={() => {
+                this.props.tangGiamSoLuong(item.maSP, false);
+              }}
+              className="btn btn-success ml-1"
+            >
+              -
+            </button>
           </td>
           <td>{item.giaBan.toLocaleString()}</td>
           <td>{(item.giaBan * item.soLuong).toLocaleString()}</td>
@@ -37,6 +51,13 @@ class GioHangRedux extends Component {
       );
     });
   };
+
+  tinhTongTien = () => {
+    return this.props.gioHang.reduce((tongTien, spGioHang, idnex) => {
+      return (tongTien +=
+        spGioHang.soLuong * spGioHang.giaBan).toLocaleString();
+    }, 0);
+  };
   render() {
     return (
       <div>
@@ -49,7 +70,7 @@ class GioHangRedux extends Component {
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content" style={{ width: 800 }}>
+            <div className="modal-content" style={{ width: 1000 }}>
               <div className="modal-header">
                 <h5 className="modal-title">Giỏ hàng</h5>
                 <button
@@ -79,7 +100,7 @@ class GioHangRedux extends Component {
                     <tr>
                       <td colSpan="5"></td>
                       <td>Tổng tiền</td>
-                      {/* <td>{this.tinhTongTien()}</td> */}
+                      <td>{this.tinhTongTien()}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -123,6 +144,17 @@ const mapDispatchToProps = (dispatch) => {
       //dùng hàm dispatch từ redux gửi dữ liệu lên render
       dispatch(action);
     },
+    //hàm tăng giảm dữ liệu
+    tangGiamSoLuong: (maSP, tangGiam) => {
+      //tạo action đưa dữ liệu trên reducer
+      let action = {
+        type: "TANG_GIAM_SO_LUONG",
+        maSP,
+        tangGiam,
+      };
+      dispatch(action);
+    },
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux);

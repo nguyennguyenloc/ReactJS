@@ -32,7 +32,23 @@ const BaiTapGioHangReducer = (state = stateGioHang, action) => {
       state.gioHang = gioHangCapNhat;
       return { ...state };
     }
-
+    case "TANG_GIAM_SO_LUONG": {
+      let gioHang = [...state.gioHang];
+      let index = gioHang.findIndex((spGH) => spGH.maSP === action.maSP);
+      if (index !== -1) {
+        if (action.tangGiam) {
+          gioHang[index].soLuong += 1;
+        } else {
+          if (gioHang[index].soLuong > 1) {
+            gioHang[index].soLuong -= 1;
+          } else {
+            alert("Số lượng chọn tối thiểu phải là 1");
+          }
+        }
+      }
+      state.gioHang = gioHang;
+      return { ...state };
+    }
     default:
       return { ...state };
   }

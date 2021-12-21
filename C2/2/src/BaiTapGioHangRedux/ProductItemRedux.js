@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-export default class ProductItemRedux extends Component {
+import { connect } from "react-redux";
+class ProductItemRedux extends Component {
   render() {
     let { product } = this.props;
     return (
@@ -15,10 +15,41 @@ export default class ProductItemRedux extends Component {
           <div className="card-body">
             <h4 className="card-title">{product.tenSP}</h4>
             <p className="card-text">{product.giaBan.toLocaleString()}</p>
-            <button className="btn btn-success">Thêm sản phẩm</button>
+            <button
+              onClick={() => {
+                this.props.themGioHang(product);
+              }}
+              className="btn btn-success"
+            >
+              Thêm sản phẩm
+            </button>
           </div>
         </div>
       </div>
     );
   }
 }
+
+//hàm gửi dữ liệu trên store
+const mapDispathToProps = (dispatch) => {
+  return {
+    themGioHang: (sanpham) => {
+      //tạo ra sp giỏ hàng
+      let spGioHang = {
+        maSP: sanpham.maSP,
+        tenSP: sanpham.tenSP,
+        hinhAnh: sanpham.hinhAnh,
+        soLuong: 1,
+        giaBan: sanpham.giaBan,
+      };
+      //tạo ra action
+      let action = {
+        type: "THEM_GIO_HANG", //thuộc tính bắt buộc
+        spGioHang,
+      };
+      //dùng hàm dispatch từ redux gửi dữ liệu lên render
+      dispatch(action);
+    },
+  };
+};
+export default connect(null, mapDispathToProps)(ProductItemRedux);

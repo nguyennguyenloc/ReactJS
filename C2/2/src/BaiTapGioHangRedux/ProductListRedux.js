@@ -57,7 +57,7 @@ export default class ProductListRedux extends Component {
     return this.mangSanPham.map((sanpham, index) => {
       return (
         <div className="col-4" key={index}>
-          <ProductItemRedux product={sanpham} />;
+          <ProductItemRedux product={sanpham} />
         </div>
       );
     });

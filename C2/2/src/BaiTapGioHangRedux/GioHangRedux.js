@@ -42,7 +42,7 @@ class GioHangRedux extends Component {
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
+            <div className="modal-content" style={{ width: 800 }}>
               <div className="modal-header">
                 <h5 className="modal-title">Giỏ hàng</h5>
                 <button
@@ -92,7 +92,6 @@ class GioHangRedux extends Component {
             </div>
           </div>
         </div>
-        ;
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHangRedux";
 // import DemoProps from "./Props/DemoProps/DemoProps";
 // import ExerciseCarStore from "./Props/Product/ExerciseCarStore";
 // import ExerciseSportShoes from "./Props/SportShoes/ExerciseSportShoes";
 // import DanhSachSanPham from "./Props/DanhSachSanPham";
-import ExerciseCart from "./Props/ExerciseCart/ExerciseCart";
+// import ExerciseCart from "./Props/ExerciseCart/ExerciseCart";
 // import ProductList from "./Props/ProductList";
 // import DemoProps from "./Props/DemoProps";
 // import dataJson from "./Data/data.json";
@@ -72,7 +73,8 @@ export default class App extends Component {
         {/* <ExerciseCarStore /> */}
         {/* <ExerciseSportShoes /> */}
         {/* <DemoProps /> */}
-        <ExerciseCart />
+        {/* <ExerciseCart /> */}
+        <BaiTapGioHangRedux />
       </div>
     );
   }

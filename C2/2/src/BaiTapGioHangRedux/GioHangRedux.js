@@ -24,7 +24,14 @@ class GioHangRedux extends Component {
           <td>{item.giaBan.toLocaleString()}</td>
           <td>{(item.giaBan * item.soLuong).toLocaleString()}</td>
           <td>
-            <button className="btn btn-danger">Xoá</button>
+            <button
+              onClick={() => {
+                this.props.xoaGioHang(item.maSP);
+              }}
+              className="btn btn-danger"
+            >
+              Xoá
+            </button>
           </td>
         </tr>
       );
@@ -51,7 +58,7 @@ class GioHangRedux extends Component {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <span aria-hidden="true">×</span>
+                  <span aria-hidden="true">x</span>
                 </button>
               </div>
               <div className="modal-body">
@@ -103,4 +110,19 @@ const mapStateToProps = (state) => {
     gioHang: state.stateGioHang.gioHang,
   };
 };
-export default connect(mapStateToProps)(GioHangRedux);
+
+// hàm đưa dữ liệu lên reducer
+const mapDispatchToProps = (dispatch) => {
+  return {
+    xoaGioHang: (maSP) => {
+      //tạo ra action
+      let action = {
+        type: "XOA_GIO_HANG",
+        maSP,
+      };
+      //dùng hàm dispatch từ redux gửi dữ liệu lên render
+      dispatch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux);

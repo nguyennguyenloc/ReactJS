@@ -22,8 +22,20 @@ const BaiTapGioHangReducer = (state = stateGioHang, action) => {
       state.gioHang = [...state.gioHang];
       return { ...state };
     }
+    case "XOA_GIO_HANG": {
+      let gioHangCapNhat = [...state.gioHang];
+      let index = gioHangCapNhat.findIndex((spGH) => spGH.maSP === action.maSP);
+      if (index !== -1) {
+        gioHangCapNhat.splice(index, 1);
+      }
+      //cập nhật state giỏ hàng
+      state.gioHang = gioHangCapNhat;
+      return { ...state };
+    }
+
+    default:
+      return { ...state };
   }
-  return { ...state };
 };
 
 export default BaiTapGioHangReducer;

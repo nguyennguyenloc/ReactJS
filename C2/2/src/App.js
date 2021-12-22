@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHangRedux";
+// import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHangRedux";
+import BaiTapGameXucXac from "./BaiTapRedux/BaiTapGameXucXac";
 // import DemoProps from "./Props/DemoProps/DemoProps";
 // import ExerciseCarStore from "./Props/Product/ExerciseCarStore";
 // import ExerciseSportShoes from "./Props/SportShoes/ExerciseSportShoes";
@@ -74,7 +75,8 @@ export default class App extends Component {
         {/* <ExerciseSportShoes /> */}
         {/* <DemoProps /> */}
         {/* <ExerciseCart /> */}
-        <BaiTapGioHangRedux />
+        {/* <BaiTapGioHangRedux /> */}
+        <BaiTapGameXucXac />
       </div>
     );
   }

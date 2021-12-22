@@ -2,11 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 class Computer extends Component {
   render() {
+    let keyframe = `@keyframes randomItem${Date.now()} {
+      0% {top: -50px;}
+      25% {top: 100px;}
+      50% {top: -50px;}
+      75% {top: 100px;}
+     100% {top: 0;}
+    
+    }`;
     return (
       <div className="text-center playerGame">
-        <div className="theThink">
+        <style>{keyframe}</style>
+        <div className="theThink" style={{ position: "relative" }}>
           <img
-            style={{ transform: "rotate(120deg" }}
+            style={{
+              left: "30%",
+              position: "absolute",
+              transform: "rotate(120deg)",
+              animation: `randomItem${Date.now()} 0.5s`,
+            }}
             className="mt-3"
             width={100}
             height={100}

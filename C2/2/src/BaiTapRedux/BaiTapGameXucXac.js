@@ -17,7 +17,7 @@ export default class BaiTapGameXucXac extends Component {
             <XucXac />
           </div>
           <div className="col-5">
-            <button className="btnGame">TÀI</button>
+            <button className="btnGame">XỈU</button>
           </div>
         </div>
         <div className="thongTinTroChoi text-center">

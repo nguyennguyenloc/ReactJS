@@ -1,6 +1,25 @@
 import React, { Component } from "react";
-
-export default class Player extends Component {
+import { connect } from "react-redux";
+class Player extends Component {
+  renderImg = () => {
+    return this.props.mangDatCuoc.map((item, index) => {
+      let border = {};
+      if (item.datCuoc) {
+        border = { border: "3px solid orange" };
+      }
+      return (
+        <div className="col-4" key={index}>
+          <button style={border} className="btnItem">
+            <img
+              style={{ width: 35, height: 35 }}
+              src={item.hinhAnh}
+              alt={item.hinhAnh}
+            />
+          </button>
+        </div>
+      );
+    });
+  };
   render() {
     return (
       <div className="text-center playerGame">
@@ -10,7 +29,10 @@ export default class Player extends Component {
             className="mt-3"
             width={100}
             height={100}
-            src="./gameOanTuXi/bua.png"
+            src={
+              this.props.mangDatCuoc.find((item) => item.datCuoc === true)
+                .hinhAnh
+            }
             alt="bua"
           />
         </div>
@@ -21,7 +43,7 @@ export default class Player extends Component {
           alt="player"
         />
         <div className="row">
-          <div className="col-4">
+          {/* <div className="col-4">
             <button className="btnItem">
               <img
                 style={{ width: 35, height: 35 }}
@@ -48,9 +70,17 @@ export default class Player extends Component {
                 alt="keo"
               />
             </button>
-          </div>
+          </div> */}
+          {this.renderImg()}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    mangDatCuoc: state.BaiTapGameOanTuXiReducer.mangDatCuoc,
+  };
+};
+export default connect(mapStateToProps)(Player);

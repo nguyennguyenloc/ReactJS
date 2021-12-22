@@ -44,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
         if (count > 10) {
           //dừng hàm setInterval
           clearInterval(randomComputerItem);
+          dispatch({ type: "END_GAME" });
         }
       }, 100);
     },

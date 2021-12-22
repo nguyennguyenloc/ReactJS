@@ -34,7 +34,10 @@ class BaiTapGameXucXac extends Component {
         </div>
         <div className="thongTinTroChoi text-center">
           <ThongTinTroChoi />
-          <button className="btn btn-success p-2 display-4 mt-5">
+          <button
+            onClick={() => this.props.playGame()}
+            className="btn btn-success p-2 display-4 mt-5"
+          >
             Play game
           </button>
         </div>
@@ -51,6 +54,12 @@ const mapDispatchToProps = (dispatch) => {
         taiXiu,
       };
       dispatch(action);
+    },
+    playGame: () => {
+      // let action = {
+      //   type: "PLAY_GAME",
+      // };
+      dispatch({ type: "PLAY_GAME" });
     },
   };
 };

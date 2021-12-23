@@ -1,6 +1,29 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+// import { HUY_GHE } from "../../redux/types/BaiTapDatVeXemPhimType";
+import { huyGheAction } from "../../redux/actions/BaiTapDatVeXemPhimActions";
 
-export default class ThongTinDatGhe extends Component {
+class ThongTinDatGhe extends Component {
+  renderA = () => {
+    return this.props.danhSachGheDangDat.map((gheDangDat, index) => {
+      return (
+        <tr key={index} className="text-warning" style={{ fontSize: "20px" }}>
+          <th>{gheDangDat.soGhe}</th>
+          <th>{gheDangDat.gia}</th>
+          <th>
+            <button
+              onClick={() => {
+                // this.props.dispatch({ type: HUY_GHE, ghe: gheDangDat.soGhe });
+                this.props.dispatch(huyGheAction(gheDangDat.soGhe));
+              }}
+            >
+              Huỷ
+            </button>
+          </th>
+        </tr>
+      );
+    });
+  };
   render() {
     return (
       <div>
@@ -29,16 +52,31 @@ export default class ThongTinDatGhe extends Component {
                 <th>Huỷ</th>
               </tr>
             </thead>
-            <tbody>
-              <tr className="text-light" style={{ fontSize: "25px" }}>
-                <th>Số ghế</th>
-                <th>Giá</th>
-                <th>Huỷ</th>
+            <tbody>{this.renderA()}</tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td>Tổng tiền</td>
+                <td className="text-warning">
+                  {this.props.danhSachGheDangDat.reduce(
+                    (tongTien, item, index) => {
+                      return (tongTien += item.gia);
+                    },
+                    0
+                  )}
+                </td>
               </tr>
-            </tbody>
+            </tfoot>
           </table>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    danhSachGheDangDat: state.BaiTapDatVeXemPhimReducer.danhSachGheDangDat,
+  };
+};
+export default connect(mapStateToProps)(ThongTinDatGhe);

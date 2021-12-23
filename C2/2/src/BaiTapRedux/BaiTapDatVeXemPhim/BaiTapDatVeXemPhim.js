@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import "./BaiTapDatVeXemPhim.css";
 import ThongTinDatGhe from "./ThongTinDatGhe";
+import danhSachGheData from "../../Data/danhSachGhe.json";
+import HangGhe from "./HangGhe";
 export default class BaiTapDatVeXemPhim extends Component {
+  renderHangGhe = () => {
+    return danhSachGheData.map((hangGhe, index) => {
+      return (
+        <div key={index}>
+          <HangGhe hangGhe={hangGhe} soHangGhe={index} />
+        </div>
+      );
+    });
+  };
   render() {
     return (
       <div
@@ -35,12 +46,14 @@ export default class BaiTapDatVeXemPhim extends Component {
                   className="mt-ư"
                   style={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <div className="screen"></div>
                 </div>
+                {this.renderHangGhe()}
               </div>
               <div className="col-4 ">
                 <div style={{ fontSize: "35px" }} className="text-light mt-2 ">

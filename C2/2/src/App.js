@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import BaiTapDatVeXemPhim from "./BaiTapRedux/BaiTapDatVeXemPhim/BaiTapDatVeXemPhim";
+// import BaiTapDatVeXemPhim from "./BaiTapRedux/BaiTapDatVeXemPhim/BaiTapDatVeXemPhim";
+import DemoPureComponent from "./DemoPureComponent/DemoPureComponent";
 // import BaiTapGameOanTuXi from "./BaiTapRedux/BaiTapGameOanTuXi/BaiTapGameOanTuXi";
 // import BaiTapGioHangRedux from "./BaiTapGioHangRedux/BaiTapGioHangRedux";
 // import BaiTapGameXucXac from "./BaiTapRedux/BaiTapGameXucXac";
@@ -80,7 +81,8 @@ export default class App extends Component {
         {/* <BaiTapGioHangRedux /> */}
         {/* <BaiTapGameXucXac /> */}
         {/* <BaiTapGameOanTuXi /> */}
-        <BaiTapDatVeXemPhim />
+        {/* <BaiTapDatVeXemPhim /> */}
+        <DemoPureComponent />
       </div>
     );
   }

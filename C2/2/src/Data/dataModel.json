@@ -1,0 +1,6 @@
+[
+    {"id":1,"name":"Tào Tháo","age":65,"img":"./model/taothao.jpg","like":0,"active":true},
+    {"id":2,"name":"Gia Cát Lượng","age":54,"img":"./model/giacatluong.jpg","like":0,"active":false},
+    {"id":3,"name":"Joker","age":35,"img":"./model/joker.jpg","like":0,"active":false},
+    {"id":4,"name":"Iron Man","age":38,"img":"./model/ironman.png","like":0,"active":false}
+]

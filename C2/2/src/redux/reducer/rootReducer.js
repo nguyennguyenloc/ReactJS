@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import BaiTapBurgerReducer from "./BaiTapBurgerReducer";
 import BaiTapDatVeXemPhimReducer from "./BaiTapDatVeXemPhimReducer";
 import BaiTapGioHangReducer from "./BaiTapGioHangReducer";
 import BaiTapOanTuXiReducer from "./BaiTapOanTuXiReducer";
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   BaiTapGameXucXacReducer: BaiTapXucXacReducer,
   BaiTapGameOanTuXiReducer: BaiTapOanTuXiReducer,
   BaiTapDatVeXemPhimReducer: BaiTapDatVeXemPhimReducer,
+  BaiTapBurgerReducer: BaiTapBurgerReducer,
 });
 
 export default rootReducer;

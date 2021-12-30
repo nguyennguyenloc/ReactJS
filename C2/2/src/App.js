@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import ContextDemo from "./ContextDemo/ContextDemo";
-import ExContextModelList from "./ContextDemo/ExContextModelList/ExContextModelList";
+// import ExContextModelList from "./ContextDemo/ExContextModelList/ExContextModelList";
+import BaiTapBurger from "./Props/BaiTapBurger/BaiTapBurger";
 // import BaiTapDatVeXemPhim from "./BaiTapRedux/BaiTapDatVeXemPhim/BaiTapDatVeXemPhim";
 // import DemoPureComponent from "./DemoPureComponent/DemoPureComponent";
 // import BaiTapGameOanTuXi from "./BaiTapRedux/BaiTapGameOanTuXi/BaiTapGameOanTuXi";
@@ -86,7 +87,8 @@ export default class App extends Component {
         {/* <BaiTapDatVeXemPhim /> */}
         {/* <DemoPureComponent /> */}
         {/* <ContextDemo /> */}
-        <ExContextModelList />
+        {/* <ExContextModelList /> */}
+        <BaiTapBurger />
       </div>
     );
   }

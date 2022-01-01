@@ -3,23 +3,62 @@ import "./UserProfile.css";
 
 export default class UserProfile extends Component {
   state = {
-    firstName: "Lộc",
-    lastName: "",
-    userName: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
+    values: {
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+    errors: {
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
   };
 
   handleChangeValue = (event) => {
-    let { name, value } = event.target;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () => {
-        console.log(this.state);
+    let { name, value, type } = event.target;
+
+    let newValue = { ...this.state.values, [name]: value };
+    let newErrors = { ...this.state.errors };
+
+    if (value.trim() === "") {
+      newErrors[name] = name + " is required !";
+    } else {
+      newErrors[name] = "";
+    }
+
+    if (type === "email") {
+      const regexEmail =
+        /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
+
+      if (!regexEmail.test(value)) {
+        //nếu email không hợp lệ
+        newErrors[name] = name + " is invalid !";
+      } else {
+        //nếu email hợp lệ
+        newErrors[name] = "";
       }
+    }
+
+    if (name === "passwordConfirm") {
+      if (value === newValue["password"]) {
+        newErrors[name] = "";
+      } else {
+        newErrors[name] = name + " is valid";
+      }
+    }
+    this.setState(
+      { values: newValue, errors: newErrors }
+      // ,
+      // () => {
+      //   console.log(this.state);
+      // }
     );
   };
   render() {
@@ -45,6 +84,7 @@ export default class UserProfile extends Component {
             <div className="col-6">
               <div className="group">
                 <input
+                  value={this.state.values.firstName}
                   type="text"
                   name="firstName"
                   required
@@ -53,11 +93,15 @@ export default class UserProfile extends Component {
                 <span className="highlight" />
                 <span className="bar" />
                 <label>firstName</label>
+                <span className="text text-danger">
+                  {this.state.errors.firstName}
+                </span>
               </div>
             </div>
             <div className="col-6">
               <div className="group">
                 <input
+                  value={this.state.values.lastName}
                   type="text"
                   name="lastName"
                   required
@@ -66,6 +110,9 @@ export default class UserProfile extends Component {
                 <span className="highlight" />
                 <span className="bar" />
                 <label>lastName</label>
+                <span className="text text-danger">
+                  {this.state.errors.lastName}
+                </span>
               </div>
             </div>
           </div>
@@ -73,14 +120,18 @@ export default class UserProfile extends Component {
             <div className="col-12">
               <div className="group">
                 <input
+                  value={this.state.values.userName}
                   type="text"
-                  name="useName"
+                  name="userName"
                   required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>useName</label>
+                <span className="text text-danger">
+                  {this.state.errors.userName}
+                </span>
               </div>
             </div>
           </div>
@@ -88,6 +139,7 @@ export default class UserProfile extends Component {
             <div className="col-12">
               <div className="group">
                 <input
+                  value={this.state.values.email}
                   type="text"
                   name="email"
                   required
@@ -96,6 +148,9 @@ export default class UserProfile extends Component {
                 <span className="highlight" />
                 <span className="bar" />
                 <label>email</label>
+                <span className="text text-danger">
+                  {this.state.errors.email}
+                </span>
               </div>
             </div>
           </div>
@@ -103,6 +158,7 @@ export default class UserProfile extends Component {
             <div className="col-6">
               <div className="group">
                 <input
+                  value={this.state.values.password}
                   name="password"
                   type="password"
                   required
@@ -111,11 +167,15 @@ export default class UserProfile extends Component {
                 <span className="highlight" />
                 <span className="bar" />
                 <label>password</label>
+                <span className="text text-danger">
+                  {this.state.errors.password}
+                </span>
               </div>
             </div>
             <div className="col-6">
               <div className="group">
                 <input
+                  value={this.state.values.passwordConfirm}
                   name="passwordConfirm"
                   type="password"
                   required
@@ -124,6 +184,9 @@ export default class UserProfile extends Component {
                 <span className="highlight" />
                 <span className="bar" />
                 <label>passwordConfirm</label>
+                <span className="text text-danger">
+                  {this.state.errors.passwordConfirm}
+                </span>
               </div>
             </div>
           </div>

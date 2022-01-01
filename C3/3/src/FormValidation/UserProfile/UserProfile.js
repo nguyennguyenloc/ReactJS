@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "./UserProfile.css";
+// ES6 Modules or TypeScript
+import Swal from "sweetalert2";
 
+// CommonJS
 export default class UserProfile extends Component {
+  // const Swal = require("sweetalert2");
   state = {
     values: {
       firstName: "",
@@ -61,6 +65,50 @@ export default class UserProfile extends Component {
       // }
     );
   };
+
+  handleSubmit = (event) => {
+    //cản trình duyệt submit reload lại trang
+    event.preventDefault();
+    //xét điều kiện khi submit
+    let { values, errors } = this.state;
+    //biến xác định form hợp lệ
+    let valid = true;
+    let profileContent = "";
+    let errorsContent = "";
+    for (let key in values) {
+      if (values[key] === "") {
+        valid = false;
+        errorsContent += `<p class="text-left"><b class="text-danger">${key} is valid!</b></p>`;
+      }
+      profileContent += `<p class="text-left"><b>${key}:</b> ${values[key]}</p>`;
+    }
+
+    for (let key in errors) {
+      if (errors[key] !== "") {
+        errorsContent += `<p class="text-left"><b class="text-danger">${key} is valid!</b></p>`;
+        valid = false;
+      }
+    }
+
+    if (!valid) {
+      // alert("Dữ liệu chưa hợp lệ");
+      Swal.fire({
+        title: "Your profile!",
+        html: errorsContent,
+        icon: "error", //success, error, warning, question
+        confirmButtonText: "Cool",
+      });
+      return;
+    }
+    // alert("Thành công");
+    Swal.fire({
+      title: "Your profile!",
+      html: profileContent,
+      icon: "success", //success, error, warning, question
+      confirmButtonText: "Cool",
+    });
+  };
+
   render() {
     return (
       <div
@@ -72,6 +120,7 @@ export default class UserProfile extends Component {
         }}
       >
         <form
+          onSubmit={this.handleSubmit}
           style={{
             fontSize:
               'font-family:"Google Sans","Noto Sans Myanmar UI", arial, sans-serif',
@@ -87,7 +136,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.firstName}
                   type="text"
                   name="firstName"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
@@ -104,7 +152,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.lastName}
                   type="text"
                   name="lastName"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
@@ -123,7 +170,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.userName}
                   type="text"
                   name="userName"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
@@ -142,7 +188,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.email}
                   type="text"
                   name="email"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
@@ -161,7 +206,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.password}
                   name="password"
                   type="password"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
@@ -178,7 +222,6 @@ export default class UserProfile extends Component {
                   value={this.state.values.passwordConfirm}
                   name="passwordConfirm"
                   type="password"
-                  required
                   onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />

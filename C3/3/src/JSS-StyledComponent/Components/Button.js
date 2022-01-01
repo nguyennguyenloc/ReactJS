@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background: linear-gradient(#f74c0b, #ec4736);
+  background: ${(props) => (props.primary ? "blue" : "orange")};
   color: #fff;
   border: none;
   border-radius: 0.5rem;
   font-weight: bold;
   padding: 1rem;
+  font-size: ${(props) => (props.fontsize2x ? "2rem" : "3rem")};
   opacity: 1;
   &:hover {
     opacity: 0.7;
     transition: all 0.5s;
-  }
-  &.button_style {
-    font-size: 25px;
   }
 `;

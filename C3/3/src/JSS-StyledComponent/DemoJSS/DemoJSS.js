@@ -5,7 +5,10 @@ export default class DemoJSS extends Component {
   render() {
     return (
       <div>
-        <Button className="button_style">Hello Lộc</Button>
+        <Button fontsize2x primary>
+          Hello Lộc
+        </Button>
+        <Button>You are awesome!</Button>
       </div>
     );
   }

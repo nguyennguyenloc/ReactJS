@@ -2,6 +2,26 @@ import React, { Component } from "react";
 import "./UserProfile.css";
 
 export default class UserProfile extends Component {
+  state = {
+    firstName: "Lộc",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  };
+
+  handleChangeValue = (event) => {
+    let { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
   render() {
     return (
       <div
@@ -24,7 +44,12 @@ export default class UserProfile extends Component {
           <div className="row">
             <div className="col-6">
               <div className="group">
-                <input type="text" name="firstName" required />
+                <input
+                  type="text"
+                  name="firstName"
+                  required
+                  onChange={this.handleChangeValue}
+                />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>firstName</label>
@@ -32,7 +57,12 @@ export default class UserProfile extends Component {
             </div>
             <div className="col-6">
               <div className="group">
-                <input type="text" name="lastName" required />
+                <input
+                  type="text"
+                  name="lastName"
+                  required
+                  onChange={this.handleChangeValue}
+                />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>lastName</label>
@@ -42,7 +72,12 @@ export default class UserProfile extends Component {
           <div className="row">
             <div className="col-12">
               <div className="group">
-                <input type="text" name="useName" required />
+                <input
+                  type="text"
+                  name="useName"
+                  required
+                  onChange={this.handleChangeValue}
+                />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>useName</label>
@@ -52,7 +87,12 @@ export default class UserProfile extends Component {
           <div className="row">
             <div className="col-12">
               <div className="group">
-                <input type="text" name="email" required />
+                <input
+                  type="text"
+                  name="email"
+                  required
+                  onChange={this.handleChangeValue}
+                />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>email</label>
@@ -62,7 +102,12 @@ export default class UserProfile extends Component {
           <div className="row">
             <div className="col-6">
               <div className="group">
-                <input type="text" name="password" type="password" required />
+                <input
+                  name="password"
+                  type="password"
+                  required
+                  onChange={this.handleChangeValue}
+                />
                 <span className="highlight" />
                 <span className="bar" />
                 <label>password</label>
@@ -71,10 +116,10 @@ export default class UserProfile extends Component {
             <div className="col-6">
               <div className="group">
                 <input
-                  type="text"
                   name="passwordConfirm"
                   type="password"
                   required
+                  onChange={this.handleChangeValue}
                 />
                 <span className="highlight" />
                 <span className="bar" />

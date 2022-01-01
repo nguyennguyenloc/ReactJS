@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "../Components/Button";
+import { Button, SmallButton } from "../Components/Button";
 
 export default class DemoJSS extends Component {
   render() {
@@ -9,6 +9,7 @@ export default class DemoJSS extends Component {
           Hello Lộc
         </Button>
         <Button>You are awesome!</Button>
+        <SmallButton>Hello SmallButton</SmallButton>
       </div>
     );
   }

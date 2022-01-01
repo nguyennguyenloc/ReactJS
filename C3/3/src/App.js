@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import UserProfile from "./FormValidation/UserProfile/UserProfile";
+// import UserProfile from "./FormValidation/UserProfile/UserProfile";
+import DemoJSS from "./JSS-StyledComponent/DemoJSS/DemoJSS";
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <UserProfile />
+        {/* <UserProfile /> */}
+        <DemoJSS />
       </div>
     );
   }

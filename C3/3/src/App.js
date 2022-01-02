@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import DemoTheme from "./JSS-StyledComponent/Theme/DemoTheme";
+import ToDoList from "./JSS-StyledComponent/BaiTapStyleComponent/BaiTapToDoList/ToDoList";
+// import DemoTheme from "./JSS-StyledComponent/Theme/DemoTheme";
 // import UserProfile from "./FormValidation/UserProfile/UserProfile";
 // import DemoJSS from "./JSS-StyledComponent/DemoJSS/DemoJSS";
 
@@ -9,7 +10,8 @@ export default class App extends Component {
       <div>
         {/* <UserProfile /> */}
         {/* <DemoJSS /> */}
-        <DemoTheme />
+        {/* <DemoTheme /> */}
+        <ToDoList />
       </div>
     );
   }

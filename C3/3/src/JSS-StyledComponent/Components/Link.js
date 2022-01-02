@@ -5,7 +5,9 @@ import styled from "styled-components";
 // };
 
 export const Link = ({ className, children, ...restProps }) => (
-  <a className={className}>{children}</a>
+  <a className={className} {...restProps}>
+    {children}
+  </a>
 );
 
 export const StyledLink = styled(Link)`

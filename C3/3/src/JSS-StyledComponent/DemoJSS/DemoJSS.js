@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, SmallButton } from "../Components/Button";
+import { StyledLink } from "../Components/Link";
 
 export default class DemoJSS extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class DemoJSS extends Component {
         </Button>
         <Button>You are awesome!</Button>
         <SmallButton>Hello SmallButton</SmallButton>
+        <StyledLink>Styled Link</StyledLink>
       </div>
     );
   }

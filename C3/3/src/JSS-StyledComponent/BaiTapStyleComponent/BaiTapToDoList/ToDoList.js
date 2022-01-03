@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import {
   addTaskAction,
   changeThemeAction,
+  deleteTaskAction,
+  doneTaskAction,
 } from "../../../redux/actions/ToDoListActions";
 import { arrTheme } from "../../Theme/ThemeManager";
 
@@ -19,7 +21,7 @@ class ToDoList extends Component {
   };
   renderTaskToDo = () => {
     return this.props.taskList
-      .filter((task) => task.done)
+      .filter((task) => !task.done)
       .map((task, index) => {
         return (
           <Tr key={index}>
@@ -28,10 +30,20 @@ class ToDoList extends Component {
               <Button className="ml-1">
                 <i className="fa fa-edit"></i>
               </Button>
-              <Button className="ml-1">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(doneTaskAction(task.id));
+                }}
+                className="ml-1"
+              >
                 <i className="fa fa-check"></i>
               </Button>
-              <Button className="ml-1">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(deleteTaskAction(task.id));
+                }}
+                className="ml-1"
+              >
                 <i className="fa fa-trash"></i>
               </Button>
             </Th>
@@ -42,13 +54,18 @@ class ToDoList extends Component {
 
   renderTaskDone = () => {
     return this.props.taskList
-      .filter((item) => !item.done)
+      .filter((item) => item.done)
       .map((task, index) => {
         return (
           <Tr key={index}>
             <Th style={{ verticalAlign: "middle" }}>{task.taskName}</Th>
             <Th className="text-right">
-              <Button className="ml-1">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(deleteTaskAction(task.id));
+                }}
+                className="ml-1"
+              >
                 <i className="fa fa-trash"></i>
               </Button>
             </Th>

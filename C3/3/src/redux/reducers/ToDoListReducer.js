@@ -1,6 +1,11 @@
 import { arrTheme } from "../../JSS-StyledComponent/Theme/ThemeManager";
 import { ToDoListDarkTheme } from "../../JSS-StyledComponent/Theme/ToDoListDarkTheme";
-import { add_task, change_theme } from "../types/ToDoListType";
+import {
+  add_task,
+  change_theme,
+  delete_task,
+  done_task,
+} from "../types/ToDoListType";
 
 const initialState = {
   themeToDoList: ToDoListDarkTheme,
@@ -46,6 +51,42 @@ const ToDoListReducer = (state = initialState, action) => {
         state.themeToDoList = { ...theme.theme };
       }
       return { ...state };
+    }
+
+    case done_task: {
+      //click button check => dispatch lên redux
+      let taskListUpdate = [...state.taskList];
+      //tìm vị trí task được click
+      let index = taskListUpdate.findIndex((task) => task.id === action.taskId);
+      //cập nhật trạng thái thành done
+      if (index !== -1) {
+        taskListUpdate[index].done = true;
+      }
+      // state.taskList = taskListUpdate;
+      return { ...state, taskList: taskListUpdate };
+    }
+
+    case delete_task: {
+      // let taskListUpdate = [...state.taskList];
+      //c1
+      // let index = taskListUpdate.findIndex((task) => task.id == action.taskId);
+      // if (index !== -1) {
+      //   taskListUpdate.splice(index, 1);
+      // }
+
+      //c2
+      // taskListUpdate = taskListUpdate.filter(
+      //   (task) => task.id !== action.taskId
+      // );
+      // state.taskList = taskListUpdate;
+
+      // return { ...state };
+
+      //c3
+      return {
+        ...state,
+        taskList: state.taskList.filter((task) => task.id !== action.taskId),
+      };
     }
     default:
       return { ...state };

@@ -7,7 +7,12 @@ import { TextField } from "../../Components/TextField";
 import { Button } from "../../Components/Button";
 import { Table, Thead, Tr, Th } from "../../Components/Table";
 import { connect } from "react-redux";
+import { addTaskAction } from "../../../redux/actions/ToDoListActions";
+
 class ToDoList extends Component {
+  state = {
+    taskName: "",
+  };
   renderTaskToDo = () => {
     return this.props.taskList
       .filter((task) => task.done)
@@ -33,7 +38,7 @@ class ToDoList extends Component {
 
   renderTaskDone = () => {
     return this.props.taskList
-      .filter((item) => item.done === false)
+      .filter((item) => !item.done)
       .map((task, index) => {
         return (
           <Tr key={index}>
@@ -47,6 +52,13 @@ class ToDoList extends Component {
         );
       });
   };
+
+  // handleChange = (event) => {
+  //   let { name, value } = event.target.value;
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // };
   render() {
     return (
       <ThemeProvider theme={this.props.themeToDoList}>
@@ -59,8 +71,30 @@ class ToDoList extends Component {
           <Heading3 className="">To do list</Heading3>
           {/* <Label>Task Name</Label> */}
           {/* <Input />  */}
-          <TextField label="Task name" className="w-50"></TextField>
-          <Button className="ml-2">
+          <TextField
+            onChange={(event) => {
+              this.setState({
+                taskName: event.target.value,
+              });
+            }}
+            name="task_name"
+            label="Task name"
+            className="w-50"
+          ></TextField>
+          <Button
+            onClick={() => {
+              //lấy thông tin từ input
+              let { taskName } = this.state;
+              //tạo ra 1 taskObject
+              let newTask = {
+                id: Date.now(),
+                taskName: taskName,
+                done: true,
+              };
+              //đưa task object lên redux thông qua phương thức dispath
+              this.props.dispatch(addTaskAction(newTask));
+            }}
+          >
             <i className="fa fa-plus"></i> Add task
           </Button>
           <Button className="ml-2">

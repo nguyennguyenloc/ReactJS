@@ -1,22 +1,22 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
+//----------------button-------------------
 export const Button = styled.button`
-  background: ${(props) => (props.primary ? "blue" : "orange")};
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  padding: 1rem;
-  font-size: ${(props) => (props.fontsize2x ? "2rem" : "3rem")};
-  opacity: 1;
-  &:hover {
-    opacity: 0.7;
-    transition: all 0.5s;
-  }
+    apperance:none;
+    background-color: ${props => props.theme.bgColor};
+    color: ${props => props.theme.color};
+    border: ${props => props.theme.borderButton};
+    padding: .25em .5em;
+    transition: all .5s;
+    font-size:17px;
+    &:hover {
+        color: ${props => props.theme.hoverTextColor};
+        background-color:${props => props.theme.hoverBgColor};
+        border: ${props => props.theme.borderButton};
+    };
 `;
 
-export const SmallButton = styled(Button)`
-  background-color: green;
-  font-size: 5rem;
-  padding: 0.5rem;
-`;
+
+
+
+
+

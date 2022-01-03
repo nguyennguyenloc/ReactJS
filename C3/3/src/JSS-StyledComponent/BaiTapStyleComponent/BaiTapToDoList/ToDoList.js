@@ -7,7 +7,11 @@ import { TextField } from "../../Components/TextField";
 import { Button } from "../../Components/Button";
 import { Table, Thead, Tr, Th } from "../../Components/Table";
 import { connect } from "react-redux";
-import { addTaskAction } from "../../../redux/actions/ToDoListActions";
+import {
+  addTaskAction,
+  changeThemeAction,
+} from "../../../redux/actions/ToDoListActions";
+import { arrTheme } from "../../Theme/ThemeManager";
 
 class ToDoList extends Component {
   state = {
@@ -59,14 +63,29 @@ class ToDoList extends Component {
   //     [name]: value,
   //   });
   // };
+
+  renderTheme = () => {
+    return arrTheme.map((theme, index) => {
+      return (
+        <option key={index} value={theme.id}>
+          {theme.name}
+        </option>
+      );
+    });
+  };
   render() {
     return (
       <ThemeProvider theme={this.props.themeToDoList}>
         <Container className="w-50">
-          <Dropdown>
-            <option value="1">Dark theme</option>
-            <option value="2">Light theme</option>
-            <option value="3">Primary theme</option>
+          <Dropdown
+            onChange={(event) => {
+              let { value } = event.target;
+              //dispatch value lên reducer
+              // this.props.dispatch(change_theme(value));
+              this.props.dispatch(changeThemeAction(value));
+            }}
+          >
+            {this.renderTheme()}
           </Dropdown>
           <Heading3 className="">To do list</Heading3>
           {/* <Label>Task Name</Label> */}

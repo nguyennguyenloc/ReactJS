@@ -96,6 +96,13 @@ class ToDoList extends Component {
       );
     });
   };
+
+  componentWillReceiveProps(newProps) {
+    console.log("ok", newProps);
+    this.setState({
+      taskName: newProps.taskEdit.taskName,
+    });
+  }
   render() {
     return (
       <ThemeProvider theme={this.props.themeToDoList}>
@@ -110,11 +117,11 @@ class ToDoList extends Component {
           >
             {this.renderTheme()}
           </Dropdown>
-          <Heading3 className="">To do list</Heading3>
+          <Heading3>To do list</Heading3>
           {/* <Label>Task Name</Label> */}
           {/* <Input />  */}
           <TextField
-            value={this.props.taskEdit.taskName}
+            value={this.state.taskName}
             onChange={(event) => {
               this.setState({
                 taskName: event.target.value,

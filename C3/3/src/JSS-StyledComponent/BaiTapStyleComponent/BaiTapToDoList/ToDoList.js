@@ -13,6 +13,7 @@ import {
   deleteTaskAction,
   doneTaskAction,
   editTaskAction,
+  updateTaskAction,
 } from "../../../redux/actions/ToDoListActions";
 import { arrTheme } from "../../Theme/ThemeManager";
 
@@ -97,12 +98,20 @@ class ToDoList extends Component {
     });
   };
 
-  componentWillReceiveProps(newProps) {
-    console.log("ok", newProps);
-    this.setState({
-      taskName: newProps.taskEdit.taskName,
-    });
-  }
+  // componentWillReceiveProps(newProps) {
+  //   console.log("ok", newProps);
+  //   this.setState({
+  //     taskName: newProps.taskEdit.taskName,
+  //   });
+  // }
+
+  // static getDerivedStateFromProps(newProps, currentState) {
+  //   //newProps: props mới, props cũ không truy xuất được do là this.state trong static
+  //   //currentState: state hiện tại
+  //   //hoặc trả về state mới
+  //   let newState = { ...currentState, taskName: newProps.taskEdit.taskName };
+  //   return newState;
+  // }
   render() {
     return (
       <ThemeProvider theme={this.props.themeToDoList}>
@@ -147,7 +156,12 @@ class ToDoList extends Component {
           >
             <i className="fa fa-plus"></i> Add task
           </Button>
-          <Button className="ml-2">
+          <Button
+            onClick={() => {
+              this.props.dispatch(updateTaskAction(this.state.taskName));
+            }}
+            className="ml-2"
+          >
             <i className="fa fa-upload"></i> Update task
           </Button>
           <br />
@@ -163,6 +177,17 @@ class ToDoList extends Component {
         </Container>
       </ThemeProvider>
     );
+  }
+
+  //trả về props cũ, state cũ trước khi render (life cycle này chạy sau render)
+  componentDidUpdate(prevProps, prevState) {
+    //so sánh nếu props trước đó - khác với edit props hiện tai thì setState
+
+    if (prevProps.taskEdit.id !== this.props.taskEdit.id) {
+      this.setState({
+        taskName: this.props.taskEdit.taskName,
+      });
+    }
   }
 }
 

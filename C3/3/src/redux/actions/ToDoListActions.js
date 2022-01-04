@@ -4,6 +4,7 @@ import {
   delete_task,
   done_task,
   edit_task,
+  update_task,
 } from "../types/ToDoListType";
 
 export const addTaskAction = (newTask) => {
@@ -37,5 +38,12 @@ export const editTaskAction = (task) => {
   return {
     type: edit_task,
     task,
+  };
+};
+
+export const updateTaskAction = (taskName) => {
+  return {
+    type: update_task,
+    taskName,
   };
 };

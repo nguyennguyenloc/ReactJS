@@ -6,6 +6,7 @@ import {
   delete_task,
   done_task,
   edit_task,
+  update_task,
 } from "../types/ToDoListType";
 
 const initialState = {
@@ -93,6 +94,26 @@ const ToDoListReducer = (state = initialState, action) => {
 
     case edit_task: {
       return { ...state, taskEdit: action.task };
+    }
+
+    case update_task: {
+      //chỉnh sửa lại taskName của taskEdit
+      // console.log("action:", action.taskName);
+      state.taskEdit = { ...state.taskEdit, taskName: action.taskName };
+
+      //tìm trong taskList cập nhật lại taskEdit người dùng update
+      let taskListUpdate = [...state.taskList];
+
+      let index = taskListUpdate.findIndex(
+        (task) => task.id === state.taskEdit.id
+      );
+      if (index !== -1) {
+        // console.log("state taskEdit", state.taskEdit);
+        taskListUpdate[index] = state.taskEdit;
+      }
+
+      state.taskList = taskListUpdate;
+      return { ...state };
     }
     default:
       return { ...state };
